@@ -1,0 +1,80 @@
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+
+const ContactForm = () => {
+  const [contact, setContact] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
+  const navigate = useNavigate();
+
+  const { actions } = useContext(Context);
+
+  const handleChange = (e) => {
+    setContact({ ...contact, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    actions.addContact(contact);
+    navigate("/");
+  };
+
+  return (
+    <div className="container-fluid w-75">
+      <div className="card mt-4">
+        <div className="card-body">
+          <h1>New Contact:</h1>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <input
+              name="name"
+              className="form-control mt-2"
+              placeholder="Full Name"
+              value={contact.fullName}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+
+            <input
+              name="email"
+              placeholder="Email"
+              className="form-control mt-2"
+              value={contact.email}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+            <input
+              name="phone"
+              placeholder="Phone"
+              className="form-control mt-2"
+              value={contact.phone}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+            <input
+              name="address"
+              placeholder="Address"
+              className="form-control mt-2"
+              value={contact.address}
+              onChange={(e) => handleChange(e)}
+              required
+            />
+            <button className="mt-2 btn btn-dark w-100" type="submit">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+      <Link to="/" className="w-100 btn btn-dark mt-4">
+        Go Back to Contact List
+      </Link>
+    </div>
+  );
+};
+
+export default ContactForm;
