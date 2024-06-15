@@ -66,7 +66,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log(response);
 
             setStore({ userName });
-            alert("User Created Succesfully");
           }
         } catch (error) {
           console.log("failed to create user");
@@ -77,12 +76,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         const actions = getActions();
         setStore({ userName });
         actions.getContacts();
-
-        alert("Agenda Retrieved");
       },
 
       editContact: async (contact, id) => {
         const store = getStore();
+        console.log("editContact called with id:", id); // Log id
+        console.log("Contact details:", contact); // Log contact details
         // {title: string, body: string}
         try {
           const response = await fetch(
@@ -114,7 +113,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         } catch (error) {
           console.log(error);
-          alert("Contact not added, create user name first");
         }
       },
       deleteContact: async (id) => {
@@ -138,7 +136,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         } catch (error) {
           console.log(error);
-          alert("Contact not added, create user name first");
         }
       },
     },

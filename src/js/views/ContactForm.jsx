@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 
 const ContactForm = () => {
@@ -35,7 +34,7 @@ const ContactForm = () => {
               name="name"
               className="form-control mt-2"
               placeholder="Full Name"
-              value={contact.fullName}
+              value={contact.name}
               onChange={(e) => handleChange(e)}
               required
             />

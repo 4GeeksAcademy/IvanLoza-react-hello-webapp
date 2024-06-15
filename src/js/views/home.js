@@ -70,9 +70,14 @@ export const Home = () => {
                   </p>
                 </div>
                 <div className="col-3 card-footer d-flex align-items-center justify-content-center">
-                  <button className="btn btn-dark btn-sm ms-1">
+                  <Link
+                    to={{
+                      pathname: `/editform/${contact.id}`,
+                    }}
+                    className="btn btn-dark btn-sm ms-1"
+                  >
                     <i className="fas fa-edit"></i>
-                  </button>
+                  </Link>
                   <button
                     className="btn btn-dark btn-sm ms-1"
                     onClick={() => handleDeleteContact(contact.id)}

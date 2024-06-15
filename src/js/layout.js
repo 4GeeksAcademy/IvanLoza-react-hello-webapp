@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./views/home";
 import ContactForm from "./views/ContactForm.jsx";
-import editForm from "./views/editForm.jsx";
+import EditForm from "./views/EditForm.jsx";
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -17,7 +17,7 @@ const Layout = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contactform" element={<ContactForm />} />
-          <Route path="/editform" element={<editForm />} />
+          <Route path="/editform/:id" element={<EditForm />} />
           <Route path="*" element={<h1>Not found!</h1>} />
         </Routes>
       </BrowserRouter>
