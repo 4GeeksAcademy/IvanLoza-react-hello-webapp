@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -18,7 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await response.json();
           console.log(data);
+
           setStore({ contacts: data.contacts });
+          toast.success("Contacts Retrieved");
         } catch (error) {
           console.log(error);
         }
@@ -48,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log(response);
 
             setStore({ contacts: [...store.contacts, data] });
+            toast.success("Contact Added");
           }
         } catch (error) {
           console.log(error);
@@ -127,6 +132,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
           if (response.ok) {
             console.log(response);
+            toast.success("Contact Deleted");
 
             const filteredContacts = store.contacts.filter(
               (contact) => contact.id !== id

@@ -4,6 +4,7 @@ import { Home } from "./views/home";
 import ContactForm from "./views/ContactForm.jsx";
 import EditForm from "./views/EditForm.jsx";
 import injectContext from "./store/appContext";
+import { Toaster } from "sonner";
 
 //create your first component
 const Layout = () => {
@@ -14,6 +15,7 @@ const Layout = () => {
   return (
     <div>
       <BrowserRouter basename={basename}>
+        <Toaster />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contactform" element={<ContactForm />} />
